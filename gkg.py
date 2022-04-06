@@ -10,10 +10,13 @@ def getsoup():
 
 def getcontent1(soup):
     content=soup.find('div',class_='entry-content')
-    return content
+    return content.find_all('p')
+
 
 def getcontent2(soup):
-    content=soup.find('div',id='')
+    s=soup.find('div',id='main')
+    leftbar=s.find('ul', class_='leftBarList')
+    content=leftbar.find_all('li')
     return content
 
 def printres(res):
@@ -22,22 +25,15 @@ def printres(res):
         print(r.text)
 
 
-def divid(content):
-    res = content.find_all()
-
-def getres(content):
-    return content.find_all('p')
-
 def scrapgkg():
     soup=getsoup()
     print(soup.prettify())
     print("#########CONTENT#########")
     content = getcontent1(soup)  #based on div class name
     # content = getcontent2(soup)    #based on div id
-    print(content)
-    res=getres(content)
+    # print(content)
     print("#########RESULT#########")
-    printres(res)
+    printres(content)
 
 
 
