@@ -16,7 +16,7 @@ def getcontent(soup):
 def printresult(content):
     res = content.find_all('p')
     for r in res:
-        r.text
+        print(r.text)
 
 
 def scrapgkg():
