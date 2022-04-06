@@ -8,25 +8,37 @@ def getsoup():
     return bs(req_txt.content,'html.parser')
 
 
-def getcontent(soup):
+def getcontent1(soup):
     content=soup.find('div',class_='entry-content')
     return content
 
+def getcontent2(soup):
+    content=soup.find('div',id='')
+    return content
 
-def printresult(content):
-    res = content.find_all('p')
+def printres(res):
+
     for r in res:
         print(r.text)
 
 
+def divid(content):
+    res = content.find_all()
+
+def getres(content):
+    return content.find_all('p')
+
 def scrapgkg():
     soup=getsoup()
     print(soup.prettify())
-    print("##################")
-    content = getcontent(soup)
+    print("#########CONTENT#########")
+    content = getcontent1(soup)  #based on div class name
+    # content = getcontent2(soup)    #based on div id
     print(content)
-    print("##################")
-    printresult(content)
+    res=getres(content)
+    print("#########RESULT#########")
+    printres(res)
+
 
 
 
